@@ -1,27 +1,43 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:motherly_v1/firebase_notification_service.dart';
+import 'package:motherly_v1/firebase_options.dart';
+import 'package:motherly_v1/login_screen.dart';
 import 'package:motherly_v1/registration.dart';
 import 'package:easy_sinhala_text/easy_sinhala_text.dart';
 
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  final notificationService = NotificationService();
+  await notificationService.initNotifications();
+// Optional: background message handler
+  FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
+  runApp(MyApp(notificationService: notificationService));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final NotificationService notificationService;
+  const MyApp({super.key, required this.notificationService});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const WelcomeScreen(),
+      home: WelcomeScreen(notificationService: notificationService),
     );
   }
 }
 
 class WelcomeScreen extends StatefulWidget {
-  const WelcomeScreen({super.key});
+  final NotificationService notificationService;
+  const WelcomeScreen({super.key, required this.notificationService});
 
   @override
   State<WelcomeScreen> createState() => _WelcomeScreenState();
@@ -132,7 +148,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
                   // GET STARTED BUTTON
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => LoginScreen(
+                              notificationService: widget.notificationService,
+                            ),
+                          ),
+                        );
+                      },
                     style: ElevatedButton.styleFrom(
                       backgroundColor:
                           const Color.fromARGB(255, 255, 232, 245),
@@ -149,6 +174,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         color: Color.fromARGB(255, 175, 23, 134),
                       ),
                     ),
+                    
                   ),
 
                   const SizedBox(height: 20),
@@ -157,11 +183,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const RegistrationScreen(),
-                        ),
-                      );
+  context,
+  MaterialPageRoute(
+    builder: (context) => RegistrationScreen(
+      notificationService: widget.notificationService,
+    ),
+  ),
+);
+
                     },
                     child: RichText(
                       text: TextSpan(
@@ -257,4 +286,8 @@ class BottomCurvesPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => true;
+}
+
+Future<void> handleBackgroundMessage(RemoteMessage message) async {
+  print('Message: ${message.notification?.title}');
 }
