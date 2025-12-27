@@ -35,7 +35,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final babyHeight = TextEditingController();
   final babyBlood = TextEditingController();
 
-  // 🎨 Theme
+  // Theme
   LinearGradient get gradient {
     if (selectedGender == BabyGender.girl) {
       return const LinearGradient(
@@ -67,7 +67,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   Color get accent =>
       selectedGender == BabyGender.boy ? const Color.fromARGB(255, 145, 205, 255) : const Color.fromARGB(255, 255, 183, 207);
 
-  // 🍼 Gender select
+  // Gender select
   void selectGender(BabyGender gender) {
     setState(() {
       selectedGender = gender;
@@ -83,7 +83,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     });
   }
 
-  // 🔥 Firebase register
+  // Firebase register
   Future<void> register() async {
     if (!_formKey.currentState!.validate() ||
         selectedGender == null ||
@@ -159,7 +159,7 @@ Widget build(BuildContext context) {
           child: Column(
             children: [
 
-              // ❤️ HEART TOGGLE (CENTERED)
+              //  HEART TOGGLE (CENTERED)
               Center(
                 child: IconButton(
                   icon: Icon(
@@ -244,7 +244,7 @@ Widget build(BuildContext context) {
 }
 
 
-  // 🧩 UI helpers
+  // UI helpers
 
   Widget _card({required String title, required List<Widget> children}) {
     return Container(
