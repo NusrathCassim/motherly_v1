@@ -1,16 +1,36 @@
-# motherly_v1
+# Motherly
 
-A new Flutter project.
 
-## Getting Started
+## 📋 Final Year Project Notice
 
-This project is a starting point for a Flutter application.
+**This repository and all associated materials are part of my Final Year Project submission for the BSc (Hons) in Software Engineering degree at Cardiff Metropolitan University (UK), through the Institute of Computer Science & Business Technology (ICBT), Sri Lanka.**
 
-A few resources to get you started if this is your first Flutter project:
+**⚠️ IMPORTANT: ACADEMIC INTEGRITY NOTICE**
+This work is protected under academic copyright and is submitted for assessment purposes. Unauthorized copying, reproduction, or distribution is strictly prohibited and violates academic integrity policies of both Cardiff Metropolitan University and ICBT.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📱 Project Overview
+
+Motherly is an intelligent mobile application designed to empower rural Sri Lankan mothers with accessible infant healthcare support. The app utilizes artificial intelligence to provide early detection of visible infant health conditions through camera-based analysis, delivers personalized age-based care reminders, and offers emergency medical assistance—all through a Sinhala-language voice interface.
+
+### 🎯 Core Features
+- **🤖 AI Health Detection**: Camera-based analysis for early signs of jaundice and common skin conditions
+- **🗣️ Sinhala Voice Interface**: Full Sinhala text-to-speech for low-literacy accessibility
+- **📅 Smart Age-Based Reminders**: Automated vaccination and milestone tracking
+- **📍 Emergency Assistance**: Nearby hospital localization with one-tap calling
+- **📚 Educational Content**: Voice-narrated baby care lessons in Sinhala
+
+---
+
+## 🛠️ Technology Stack
+
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| **Frontend** | Flutter (Dart) | Cross-platform mobile application |
+| **Backend Services** | Firebase (Auth, Firestore, Storage) | User management & data storage |
+| **AI Service** | Python Flask with TensorFlow | Image processing & CNN model |
+| **Hosting** | Google Cloud Run | Flask API deployment |
+| **Database** | Cloud Firestore | Real-time NoSQL database |
+| **Mapping** | Google Maps API | Location services |
+| **Version Control** | Git & GitHub | Source code management |
