@@ -12,7 +12,8 @@ This work is protected under academic copyright and is submitted for assessment 
 
 ## 📱 Project Overview
 
-Motherly is an intelligent mobile application designed to empower rural Sri Lankan mothers with accessible infant healthcare support. The app utilizes artificial intelligence to provide early detection of visible infant health conditions through camera-based analysis, delivers personalized age-based care reminders, and offers emergency medical assistance—all through a Sinhala-language voice interface.
+Motherly is an intelligent mobile application designed to empower rural Sri Lankan mothers with accessible infant healthcare support. The app utilizes artificial intelligence to provide early detection of visible infant health conditions through camera-based analysis, delivers personalized age-based care reminders, and offers emergency medical assistance
+
 
 ### 🎯 Core Features
 - **🤖 AI Health Detection**: Camera-based analysis for early signs of jaundice and common skin conditions
