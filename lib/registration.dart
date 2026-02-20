@@ -153,6 +153,8 @@ Widget build(BuildContext context) {
     body: Container(
       decoration: BoxDecoration(gradient: gradient),
       child: SafeArea(
+        child: Form(
+      key: _formKey,
         child: SingleChildScrollView(
           controller: _scrollController,
           padding: const EdgeInsets.fromLTRB(22, 15, 24, 20), // top padding for heart
@@ -237,6 +239,7 @@ Widget build(BuildContext context) {
               ),
             ],
           ),
+        ),
         ),
       ),
     ),
