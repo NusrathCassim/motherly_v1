@@ -31,7 +31,6 @@ Motherly is an intelligent mobile application designed to empower rural Sri Lank
 | **Frontend** | Flutter (Dart) | Cross-platform mobile application |
 | **Backend Services** | Firebase (Auth, Firestore, Storage) | User management & data storage |
 | **AI Service** | Python Flask with TensorFlow | Image processing & CNN model |
-| **Hosting** | Google Cloud Run | Flask API deployment |
 | **Database** | Cloud Firestore | Real-time NoSQL database |
-| **Mapping** | Google Maps API | Location services |
+| **Mapping** |OpenStreetMaps | Location services |
 | **Version Control** | Git & GitHub | Source code management |
