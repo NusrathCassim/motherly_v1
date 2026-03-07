@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "448696791874",
+    "project_id": "motherly-1877f",
+    "storage_bucket": "motherly-1877f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448696791874:android:6a54058217440227714edb",
+        "android_client_info": {
+          "package_name": "com.example.motherly_v1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRVLQmrVZy9EiDpgtoiojEZYWM0tFrAVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

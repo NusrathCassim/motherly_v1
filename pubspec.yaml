@@ -24,7 +24,23 @@ dependencies:
   cupertino_icons: ^1.0.8
   google_fonts: ^6.3.3
   easy_sinhala_text: ^0.0.1
+  firebase_core: ^4.2.1
+  firebase_messaging: ^16.0.4
+  flutter_local_notifications: ^19.5.0
+  cloud_firestore: ^6.1.0
+  android_alarm_manager_plus: ^5.0.0
+  flutter_tts: ^3.7.0  # For Sinhala text-to-speech
+  intl: ^0.18.1  # For date formatting
+  provider: ^6.0.5  # For state management
+  http: ^1.2.2
+  geolocator: ^11.1.0        # For getting device location
+  url_launcher: ^6.3.1       # For opening maps and making phone calls
+  map_launcher: ^3.4.0
+  image_picker: ^1.0.4
+  firebase_auth: ^6.1.2
+  timezone: ^0.10.1
 
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
