@@ -26,7 +26,7 @@ class _LearnScreenState extends State<LearnScreen> {
   String _selectedCategory = 'All';
   List<String> _categories = ['All'];
   bool _isLoadingCategories = true;
-  int _selectedIndex = 0; // For bottom navigation
+
 
   final FirestoreService _firestoreService = FirestoreService();
 

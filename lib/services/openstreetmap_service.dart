@@ -44,7 +44,7 @@ class OpenStreetMapService {
   static const String _overpassUrl = 'https://overpass-api.de/api/interpreter';
   static const String _nominatimUrl = 'https://nominatim.openstreetmap.org';
   
-  // Rate limiting: 1 request per second (be nice to free service)
+  // 
   static DateTime _lastRequest = DateTime.now().subtract(const Duration(seconds: 1));
   
   static Future<void> _respectRateLimit() async {
@@ -172,7 +172,7 @@ class OpenStreetMapService {
     }
   }
 
-  // Helper: Build address from OSM tags
+
   static String _buildAddress(Map<String, dynamic> tags) {
     List<String> parts = [];
     
@@ -219,7 +219,7 @@ class OpenStreetMapService {
     return parts.isNotEmpty ? parts.join(', ') : 'Address not available';
   }
 
-  // Helper: Remove duplicate hospitals by name and approximate location
+
   static List<Hospital> _removeDuplicates(List<Hospital> hospitals) {
     final uniqueHospitals = <Hospital>[];
     final seenIds = <String>{};

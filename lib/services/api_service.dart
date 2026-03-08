@@ -9,7 +9,8 @@ class ApiService {
   
   // Alternative URLs (comment/uncomment as needed)
   // static const String baseUrl = 'http://10.0.2.2:5000';  // Android emulator
-   static const String baseUrl = 'http://192.168.63.217:5000';  // Local network
+ //  static const String baseUrl = 'http://192.168.63.217:5000';  // Local network
+   static const String baseUrl = 'http://192.168.1.109:5000';  // Local network
   // static const String baseUrl = 'http://localhost:5000';  // iOS simulator
 
   static Future<ScanResult> analyzeBabyImage(File imageFile, {bool isSinhala = false}) async {
@@ -97,4 +98,10 @@ class ApiService {
       print('❌ Error sending feedback: $e');
     }
   }
+
+  
+
+
 }
+
+

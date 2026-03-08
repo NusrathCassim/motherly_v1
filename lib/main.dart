@@ -2,42 +2,57 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:motherly_v1/firebase_notification_service.dart';
-import 'package:motherly_v1/firebase_options.dart';
+import 'package:motherly_v1/services/background_check_service.dart';
+import 'package:motherly_v1/services/firebase_notification_service.dart';
+import 'package:motherly_v1/services/firebase_options.dart';
 import 'package:motherly_v1/login_screen.dart';
 import 'package:motherly_v1/registration.dart';
 import 'package:easy_sinhala_text/easy_sinhala_text.dart';
 
-
+late NotificationService notificationService;
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+    WidgetsFlutterBinding.ensureInitialized();
+  
+  // Initialize Firebase
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  final notificationService = NotificationService();
+  // Initialize notification service
+  notificationService = NotificationService();
   await notificationService.initNotifications();
-// Optional: background message handler
+  
+  // Set up FCM
+  await notificationService.setupFCM();
+  
+  // Handle background messages
   FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
-  runApp(MyApp(notificationService: notificationService));
+  
+  // Initialize background service with alarm manager
+  await BackgroundCheckService.initialize();
+  
+  // Register daily task (9:00 AM)
+  await BackgroundCheckService.registerDailyTask();
+  
+  runApp(const MyApp());
+
+
 }
 
 class MyApp extends StatelessWidget {
-  final NotificationService notificationService;
-  const MyApp({super.key, required this.notificationService});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: WelcomeScreen(notificationService: notificationService),
+      home: const WelcomeScreen(),
     );
   }
 }
 
 class WelcomeScreen extends StatefulWidget {
-  final NotificationService notificationService;
-  const WelcomeScreen({super.key, required this.notificationService});
+  const WelcomeScreen({super.key});
 
   @override
   State<WelcomeScreen> createState() => _WelcomeScreenState();
@@ -153,7 +168,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           context,
                           MaterialPageRoute(
                             builder: (context) => LoginScreen(
-                              notificationService: widget.notificationService,
+                              notificationService: notificationService,
                             ),
                           ),
                         );
@@ -183,13 +198,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
-  context,
-  MaterialPageRoute(
-    builder: (context) => RegistrationScreen(
-      notificationService: widget.notificationService,
-    ),
-  ),
-);
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RegistrationScreen(
+                          notificationService: notificationService,
+                        ),
+                      ),
+                    );
 
                     },
                     child: RichText(
@@ -289,5 +304,23 @@ class BottomCurvesPainter extends CustomPainter {
 }
 
 Future<void> handleBackgroundMessage(RemoteMessage message) async {
-  print('Message: ${message.notification?.title}');
+  print('Background message: ${message.notification?.title}');
+  
+  // Initialize notification service if needed
+  final notificationService = NotificationService();
+  await notificationService.initNotifications();
+  
+  // Show the notification
+  if (message.notification != null) {
+    await notificationService.showNotification(
+      title: message.notification!.title ?? 'Vaccination Reminder',
+      body: message.notification!.body ?? '',
+    );
+  }
+  
+  // Handle data messages
+  if (message.data.isNotEmpty) {
+    print('Message data: ${message.data}');
+    // You can handle specific actions based on data
+  }
 }
