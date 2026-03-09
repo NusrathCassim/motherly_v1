@@ -17,7 +17,6 @@ Motherly is an intelligent mobile application designed to empower rural Sri Lank
 
 ### 🎯 Core Features
 - **AI Health Detection**: Camera-based analysis for early signs of jaundice and common skin conditions
-- **Sinhala Voice Interface**: Full Sinhala text-to-speech for low-literacy accessibility
 - **Smart Age-Based Reminders**: Automated vaccination and milestone tracking
 - **Emergency Assistance**: Nearby hospital localization with one-tap calling
 - **Educational Content**: baby care lessons in Sinhala
