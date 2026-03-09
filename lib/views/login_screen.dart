@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:motherly_v1/home_screen.dart';
-import 'package:motherly_v1/registration.dart';
-import 'services/firebase_notification_service.dart';
+import 'package:motherly_v1/views/home_screen.dart';
+import 'package:motherly_v1/views/registration.dart';
+import '../services/firebase_notification_service.dart';
 
 class LoginScreen extends StatefulWidget {
   final NotificationService notificationService;

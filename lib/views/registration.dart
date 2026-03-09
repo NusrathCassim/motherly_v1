@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'services/firebase_notification_service.dart';
+import '../services/firebase_notification_service.dart';
 import 'home_screen.dart';
 import 'login_screen.dart';
 
@@ -93,23 +93,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     if (!_formKey.currentState!.validate() ||
         selectedGender == null ||
         babyDob == null) return;
-
     setState(() => isLoading = true);
-
     try {
-      // 1. Create user in Firebase Authentication
       UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
         email: motherEmail.text.trim(),
         password: motherPassword.text,
       );
-
       User? user = userCredential.user;
-      
       if (user != null) {
-        // 2. Send email verification
         await user.sendEmailVerification();
-
-        // 3. Save mother data to Firestore (without password)
         await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
           'name': motherName.text.trim(),
           'email': motherEmail.text.trim(),
@@ -121,11 +113,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           'phoneNumber':'',
           'updatedAt':''  
         });
-
-        // 4. Save FCM token
         await widget.notificationService.saveFcmToken(user.uid);
-
-        // 5. Save infant data
         final infantRef = await FirebaseFirestore.instance.collection('infants').add({
           'mother_id': user.uid,
           'name': babyName.text.trim(),
@@ -136,16 +124,12 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
           'bloodType': babyBlood.text.trim(),
           'createdAt': FieldValue.serverTimestamp(),
         });
-
-        // 6. Create vaccinations
         final vaccines = await FirebaseFirestore.instance
             .collection('master_vaccines')
             .get();
-
         for (var doc in vaccines.docs) {
           final months = doc['recommendedAgeInMonths'] ?? 0;
           final date = babyDob!.add(Duration(days: months * 30));
-
           await FirebaseFirestore.instance
               .collection('infant_vaccinations')
               .add({
@@ -157,8 +141,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             'notifiedDays': [],
           });
         }
-
-        // 7. Show verification dialog
         _showVerificationDialog();
       }
     } on FirebaseAuthException catch (e) {

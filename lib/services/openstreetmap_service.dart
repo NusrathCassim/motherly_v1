@@ -28,23 +28,15 @@ class Hospital {
     this.tags = const {},
   });
 
-  // For displaying in UI
   String get distanceDisplay => '${distance.toStringAsFixed(1)} km';
-  
-  // Check if hospital has emergency department
   bool get hasEmergency => tags['emergency'] == 'yes';
-  
-  // Check if 24/7
   bool get is24Hours => openingHours?.toLowerCase().contains('24/7') ?? false;
 }
 
 class OpenStreetMapService {
-  // No API key needed! Just use OpenStreetMap's free services
-  
   static const String _overpassUrl = 'https://overpass-api.de/api/interpreter';
   static const String _nominatimUrl = 'https://nominatim.openstreetmap.org';
-  
-  // 
+
   static DateTime _lastRequest = DateTime.now().subtract(const Duration(seconds: 1));
   
   static Future<void> _respectRateLimit() async {

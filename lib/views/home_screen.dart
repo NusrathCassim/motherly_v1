@@ -1,22 +1,22 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:motherly_v1/baby_info_screen.dart';
-import 'package:motherly_v1/article_data.dart';
-import 'package:motherly_v1/calender_screen.dart';
-import 'package:motherly_v1/emergency_hospitals_screen.dart';
-import 'package:motherly_v1/main.dart';
+import 'package:motherly_v1/views/baby_info_screen.dart';
+import 'package:motherly_v1/views/article_data.dart';
+import 'package:motherly_v1/views/calender_screen.dart';
+import 'package:motherly_v1/views/emergency_hospitals_screen.dart';
+import 'package:motherly_v1/views/main.dart';
 import 'package:motherly_v1/models/calender_event_modal.dart';
-import 'package:motherly_v1/profile_screen.dart';
-import 'package:motherly_v1/reminder_screen.dart';
-import 'package:motherly_v1/scan_screen.dart';
+import 'package:motherly_v1/views/profile_screen.dart';
+import 'package:motherly_v1/views/reminder_screen.dart';
+import 'package:motherly_v1/views/scan_screen.dart';
 import 'package:motherly_v1/services/firebase_notification_service.dart';
 import 'package:motherly_v1/firestore/firestore_service.dart';
 import 'package:motherly_v1/models/user_model.dart';
 import 'package:motherly_v1/models/infant_model.dart';
 import 'package:motherly_v1/models/vaccination_model.dart';
 import 'package:intl/intl.dart';
-import 'package:motherly_v1/setting_screen.dart';
-import 'package:motherly_v1/weight_tracking_screen.dart';
+import 'package:motherly_v1/views/setting_screen.dart';
+import 'package:motherly_v1/views/weight_tracking_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomeScreen extends StatefulWidget {

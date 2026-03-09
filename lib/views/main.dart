@@ -5,38 +5,23 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:motherly_v1/services/background_check_service.dart';
 import 'package:motherly_v1/services/firebase_notification_service.dart';
 import 'package:motherly_v1/services/firebase_options.dart';
-import 'package:motherly_v1/login_screen.dart';
-import 'package:motherly_v1/registration.dart';
+import 'package:motherly_v1/views/login_screen.dart';
+import 'package:motherly_v1/views/registration.dart';
 import 'package:easy_sinhala_text/easy_sinhala_text.dart';
 
 late NotificationService notificationService;
 Future<void> main() async {
-    WidgetsFlutterBinding.ensureInitialized();
-  
-  // Initialize Firebase
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
-  // Initialize notification service
   notificationService = NotificationService();
   await notificationService.initNotifications();
-  
-  // Set up FCM
   await notificationService.setupFCM();
-  
-  // Handle background messages
   FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
-  
-  // Initialize background service with alarm manager
   await BackgroundCheckService.initialize();
-  
-  // Register daily task (9:00 AM)
   await BackgroundCheckService.registerDailyTask();
-  
   runApp(const MyApp());
-
-
 }
 
 class MyApp extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:motherly_v1/emergency_hospitals_screen.dart';
+import 'package:motherly_v1/views/emergency_hospitals_screen.dart';
 import 'package:motherly_v1/services/api_service.dart';
 import 'package:motherly_v1/models/scan_result_model.dart';
 import 'package:motherly_v1/firestore/firestore_service.dart';

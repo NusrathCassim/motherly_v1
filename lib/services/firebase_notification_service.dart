@@ -119,7 +119,7 @@ class NotificationService {
   Future<void> cancelReminder(String vaccineId) async {
     final notificationId = vaccineId.hashCode;
     await _flutterLocalNotificationsPlugin.cancel(notificationId);
-    print('✅ Cancelled reminder for vaccine ID: $vaccineId');
+    print('Cancelled reminder for vaccine ID: $vaccineId');
   }
   
   // Check all vaccines and schedule 3-day reminders

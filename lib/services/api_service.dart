@@ -36,7 +36,7 @@ class ApiService {
       
       var response = await http.Response.fromStream(streamedResponse);
 
-      print('📥 Response status: ${response.statusCode}');
+      print('Response status: ${response.statusCode}');
 
       if (response.statusCode == 200) {
         var jsonData = json.decode(response.body);
@@ -46,22 +46,22 @@ class ApiService {
         throw Exception(errorData['error'] ?? 'Failed to analyze image');
       }
     } catch (e) {
-      print('❌ API Error: $e');
+      print('API Error: $e');
       throw Exception('Failed to connect to server. Server may be waking up. Please try again.');
     }
   }
 
   static Future<bool> checkHealth() async {
     try {
-      print('🔍 Checking health at: $baseUrl/health');
+      print('Checking health at: $baseUrl/health');
       var response = await http.get(
         Uri.parse('$baseUrl/health'),
       ).timeout(const Duration(seconds: 15));  // Longer timeout for cold starts
 
-      print('🔍 Health check: ${response.statusCode}');
+      print('Health check: ${response.statusCode}');
       return response.statusCode == 200;
     } catch (e) {
-      print('❌ Health check failed: $e');
+      print('Health check failed: $e');
       return false;
     }
   }
@@ -78,7 +78,7 @@ class ApiService {
         throw Exception('Failed to get model info');
       }
     } catch (e) {
-      print('❌ Error getting model info: $e');
+      print('Error getting model info: $e');
       throw Exception('Failed to connect to server');
     }
   }
@@ -95,7 +95,7 @@ class ApiService {
         throw Exception('Failed to send feedback');
       }
     } catch (e) {
-      print('❌ Error sending feedback: $e');
+      print('Error sending feedback: $e');
     }
   }
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:motherly_v1/main.dart';
+import 'package:motherly_v1/views/main.dart';
 import 'package:motherly_v1/models/infant_model.dart';
 import 'package:motherly_v1/models/user_model.dart';
 import 'package:motherly_v1/services/firebase_notification_service.dart';

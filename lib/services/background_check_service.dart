@@ -12,9 +12,9 @@ class BackgroundCheckService {
     try {
       // Request precise alarm permission for Android 12+
       await AndroidAlarmManager.initialize();
-      print("✅ Android Alarm Manager initialized");
+      print("Android Alarm Manager initialized");
     } catch (e) {
-      print("❌ Failed to initialize alarm manager: $e");
+      print("Failed to initialize alarm manager: $e");
     }
   }
 
@@ -39,16 +39,16 @@ class BackgroundCheckService {
         rescheduleOnReboot: true,    // Keep after reboot
       );
       
-      print("⏰ Registered daily vaccine check at ${scheduleDate.toIso8601String()}");
+      print("Registered daily vaccine check at ${scheduleDate.toIso8601String()}");
     } catch (e) {
-      print("❌ Failed to register alarm: $e");
+      print("Failed to register alarm: $e");
     }
   }
 
   // The callback function that runs in the background
   @pragma('vm:entry-point')
   static void _alarmCallback() async {
-    print("🔄 Background alarm triggered at ${DateTime.now()}");
+    print("Background alarm triggered at ${DateTime.now()}");
     
     // Initialize Firebase
     await Firebase.initializeApp();
@@ -59,7 +59,7 @@ class BackgroundCheckService {
 
   static Future<void> _runDailyChecks() async {
     try {
-      print("🔍 Running daily vaccination checks...");
+      print("Running daily vaccination checks...");
       
       // Get all mothers (users)
       final usersSnapshot = await FirebaseFirestore.instance
@@ -79,15 +79,15 @@ class BackgroundCheckService {
         await notificationService.checkDueVaccines(motherId);
       }
       
-      print("✅ Daily checks completed at ${DateTime.now()}");
+      print("Daily checks completed at ${DateTime.now()}");
     } catch (e) {
-      print("❌ Error in daily checks: $e");
+      print("Error in daily checks: $e");
     }
   }
 
   // Run a one-time check immediately (for testing)
   static Future<void> runManualCheck() async {
-    print("🔍 Manual check triggered");
+    print(" Manual check triggered");
     
     // Initialize Firebase if needed
     await Firebase.initializeApp();
@@ -99,9 +99,9 @@ class BackgroundCheckService {
   static Future<void> cancelAll() async {
     try {
       await AndroidAlarmManager.cancel(_helloAlarmTag.hashCode);
-      print("🛑 Cancelled all background alarms");
+      print("Cancelled all background alarms");
     } catch (e) {
-      print("❌ Failed to cancel alarms: $e");
+      print("Failed to cancel alarms: $e");
     }
   }
 }
