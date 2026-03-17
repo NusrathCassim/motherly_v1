@@ -33,3 +33,8 @@ Motherly is an intelligent mobile application designed to empower rural Sri Lank
 | **Database** | Cloud Firestore | Real-time NoSQL database |
 | **Mapping** |OpenStreetMaps | Location services |
 | **Version Control** | Git & GitHub | Source code management |
+
+### Backend 
+[Backend](https://github.com/NusrathCassim/motherly-backend)
+### Webisite
+[Webisite](https://motherly-qllj3k5lb-nusrathcassims-projects.vercel.app/)
